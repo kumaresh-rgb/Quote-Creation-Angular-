@@ -9,13 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { UserdetailsComponent } from './userdetails/userdetails.component'
 
 const routes:Routes = [
-  {path:'',component:HomeComponent },
-  {path:'register',component:RegisterComponent},
+  
+  {path:'',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'dashboard',component:DashboardComponent}
+  {path:'dashboard',component:DashboardComponent},
+  {path:'userdetails',component:UserdetailsComponent}
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes:Routes = [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserdetailsComponent
   ],
   imports: [
     BrowserModule,

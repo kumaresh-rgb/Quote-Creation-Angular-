@@ -8,7 +8,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  formdata = {email:"",password:""};
+  formdata = {email:"",password:"",username:""};
   submit=false;
   loading=false;
   errorMessage="";

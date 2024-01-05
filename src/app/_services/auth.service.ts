@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private router:Router,private http:HttpClient) { }
+  
 
   isAuthenticated():boolean{
     if (sessionStorage.getItem('token')!==null) {
@@ -29,11 +30,11 @@ export class AuthService {
     }
   }
 
-  register(name:string,email:string,password:string){
+  register(name:string,email:string,password:string ){
       //send data to register api (firebase)
      return this.http
       .post<{idToken:string}>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB2Yb9YxqcLGin-o7_Q3ejXYuyVr-W61h0',
           {displayName:name,email,password}
       );
   }
@@ -46,7 +47,7 @@ export class AuthService {
     //send data to login api (firebase)
       return this.http
       .post<{idToken:string}>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]',
+          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB2Yb9YxqcLGin-o7_Q3ejXYuyVr-W61h0',
             {email,password}
       );
   }
@@ -54,8 +55,8 @@ export class AuthService {
   detail(){
     let token = sessionStorage.getItem('token');
 
-    return this.http.post<{users:Array<{localId:string,displayName:string}>}>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=[API_KEY]',
+    return this.http.post<{users:Array<{localId:string,displayName:string,lastname:string}>}>(
+        'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyB2Yb9YxqcLGin-o7_Q3ejXYuyVr-W61h0',
         {idToken:token}
     );
   }

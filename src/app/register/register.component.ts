@@ -8,10 +8,24 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  formdata = {name:"",email:"",password:""};
+  formdata = {name:"", lastname:"",username:"",email:"",password:"",phoneno:"",role:""};
+  formdata1={dob:""};
   submit=false;
   errorMessage="";
   loading=false;
+  dob: Date | undefined;
+  isDateSelected: boolean = false; // This variable will track whether the date is selected
+
+  // Other relevant code
+
+  // Function to toggle visibility based on date selection
+  onDateSelected() {
+    if (this.dob) {
+      this.isDateSelected = true;
+    } else {
+      this.isDateSelected = false;
+    }
+  }
 
   constructor(private auth:AuthService) { }
 

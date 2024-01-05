@@ -11,17 +11,27 @@
             novalidate
             (ngSubmit)="f.form.valid&&onSubmit()"
             >
-            <div class="form-group">
-              <label for="exampleInputEmail1" class="text-uppercase">Name</label>
+            <!-- ! name  -->
 
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="text-uppercase">First Name</label>
               <input type="text" class="form-control" name="name"  id="" [(ngModel)]="formdata.name" #name="ngModel" required   >
               <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']" >
-                  Name is required.
+               First Name is required.
               </span>
-           </div>
+            </div>
+            <!-- ? Last name  -->
+             <!-- <div class="form-group">
+               <label for="exampleInputEmail1" class="text-uppercase">Last Name</label>
+               <input type="text" class="form-control" name="name"  id="" [(ngModel)]="formdata.lastname" #name="ngModel" required   >
+               <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']" >
+                Last Name is required.
+               </span>  
+             </div>  -->
+             
+           <!-- ? User name  -->
             <div class="form-group">
-              <label for="exampleInputEmail1" class="text-uppercase">Email</label>
-
+              <label for="exampleInputEmail1" class="text-uppercase">Username</label>
               <input type="text"  class="form-control" name="email" id="" [(ngModel)]="formdata.email" #email="ngModel" required  >
               <span class="text-danger"  *ngIf="this.submit&&email.errors?.['required']">
                   Email is required.
@@ -36,7 +46,47 @@
               <span class="text-danger"  *ngIf="this.submit&&password.errors?.['minlength']">
                 Minimum length of password is 8 characters
             </span>
+            
            </div>
+           
+           <!-- <div class="form-group">
+            <label for="exampleInputPassword1" class="text-uppercase">Phone no</label>
+            <input  class="form-control" type="tel"   name="password" id="" [(ngModel)]="formdata.phoneno" #password="ngModel" required minlength="8" >
+            <span class="text-danger"  *ngIf="this.submit&&password.errors?.['required']">
+                Phone is Required
+            </span>
+            <span class="text-danger"  *ngIf="this.submit&&password.errors?.['minlength']">
+              Phone No  
+          </span>
+         </div> -->
+         <!-- <div class="form-group">
+            <label for="exampleInputPassword1" class="text-uppercase">Role</label>
+            <select class="form-control"   id="" [(ngModel)]="formdata.role" #password="ngModel" required  >
+               
+               <option value="volvo">Managing Director</option>
+               <option value="saab">Assistant Manager</option>
+               <option value="fiat">Account Manager</option>
+               <option value="audi">Sales Manager</option>
+             </select>
+            
+            <span class="text-danger"  *ngIf="this.submit&&password.errors?.['required']">
+               Role is Required
+            </span>
+            <span class="text-danger"  *ngIf="this.submit&&password.errors?.['minlength']">
+              Role
+          </span>
+          
+         </div> -->
+         <div class="form-group">
+            <label for="exampleInputPassword1" class="text-uppercase">Date of Birth</label>
+            <input class="form-control" type="datetime-local" name="password" id="" [(ngModel)]="dob" #password="ngModel" required (change)="onDateSelected()">
+            <span class="text-danger" *ngIf="submit && password.errors?.['required']">
+              Dob is Required
+            </span>
+            <span class="text-danger" *ngIf="submit && password.errors?.['minlength']">
+              Role
+            </span>
+          </div>
            <div class="form-group">
 
               <span class="text-danger" *ngIf="this.errorMessage" >
@@ -54,15 +104,10 @@
            <div class="form-group">
               Already have account ? Please <a href="javascript:void(0);" routerLink="/login">Login</a>
            </div>
-
-
            </form>
 
-
         </div>
-
      </div>
-
 
   </div>
 </section>
