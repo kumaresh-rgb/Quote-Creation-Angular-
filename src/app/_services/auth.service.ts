@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,15 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private router:Router,private http:HttpClient) { }
+  private selectedDate = new BehaviorSubject<string>('');
+
+  getDate() {
+    return this.selectedDate.asObservable();
+  }
+
+  setDate(date: string) {
+    this.selectedDate.next(date);
+  }
   
 
   isAuthenticated():boolean{

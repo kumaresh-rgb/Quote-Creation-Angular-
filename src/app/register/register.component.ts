@@ -1,5 +1,6 @@
+import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -8,30 +9,21 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  formdata = {name:"", lastname:"",username:"",email:"",password:"",phoneno:"",role:""};
+
+  formdata = {name:"", lastname:"",username:"",email:"",password:"",phoneno:"",role:"",dob:""};
   formdata1={dob:""};
   submit=false;
   errorMessage="";
   loading=false;
-  dob: Date | undefined;
-  isDateSelected: boolean = false; // This variable will track whether the date is selected
+ 
+    AuthService: any;
+ 
 
-  // Other relevant code
-
-  // Function to toggle visibility based on date selection
-  onDateSelected() {
-    if (this.dob) {
-      this.isDateSelected = true;
-    } else {
-      this.isDateSelected = false;
-    }
-  }
-
-  constructor(private auth:AuthService) { }
-
+  constructor(private auth:AuthService ) { }
+ 
   ngOnInit(): void {
     this.auth.canAuthenticate();
-  }
+  };
 
   onSubmit(){
 
@@ -69,3 +61,7 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+    function ngOnInit() {
+        throw new Error('Function not implemented.');
+    }
+

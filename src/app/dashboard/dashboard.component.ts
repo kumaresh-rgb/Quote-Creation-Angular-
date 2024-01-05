@@ -1,5 +1,6 @@
+import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+
 
 // Define an interface for the expected response structure
 interface UserDetails {
@@ -18,19 +19,6 @@ interface UserDetails {
 export class DashboardComponent implements OnInit {
 
   user = { displayName: "somename" };
-  dob: Date | undefined;
-  isDateSelected: boolean = false; // This variable will track whether the date is selected
-
-  // Other relevant code
-
-  // Function to toggle visibility based on date selection
-  onDateSelected() {
-    if (this.dob) {
-      this.isDateSelected = true;
-    } else {
-      this.isDateSelected = false;
-    }
-  }
 
 
 
@@ -38,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.canAccess();
-
+    
     if (this.auth.isAuthenticated()) {
       //call user details service
       this.auth.detail().subscribe({
